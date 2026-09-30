@@ -1,32 +1,34 @@
-<table border="2">
-    <tr>
-        <th>name</th>
-        <th>dept</th>
-        <th>mob</th>
-        <th>DOB</th>
-        <th> delete </th>
-    </tr>
 <?php
-include("f1.php");
-$y="select * from students";
+include()
+$id=$_GET['id'];
+$qry=select*from info where id=$id";
 $result=mysqli_query($x,$y);
-if(mysqli_num_rows($result)>0)
+$row=mysqli_fetch_assoc($result);
+?>
+<form method="post">
+<input type="hidden" name="id" value="<?php echo $row['id'];?>">
+name:
+<input type="text" name="name" value="<?php echo $row['name'];?>">
+<br> <br>
+city:
+<input type="text" name="city" value="<?php echo $row['city'];?>">
+<br> <br>
+<input type="submit" name="update" value="update record">
+</form>
+<?php
+if(isset($_POST['update']))
 {
-    while($row=mysqli_fetch_assoc($result))
-    {
-        echo "<tr>";
-        echo "<td>" . $row['name'] ." </td>";
-        echo "<td>" . $row['dept'] ." </td>";
-        echo "<td>" . $row['mob'] ." </td>";
-        echo "<td>" . $row['DOB'] ." </td>";
-        echo "</tr>";
-        echo"<td>";
-        echo"<a href='delete.php? id= ".$row['id']."'>delete </a>";
-        echo"</td>";
-        echo"<a href='delete.php? id= ".$row['id']."'>update </a>";
-        echo"</td>";
-        echo"</tr>";
-    }
+    $id=$_POST['id'];
+    $name=$_POST['name'];
+    $city=$_POST['city'];
+$qry="update info set name='$name',city='$city' where id='$id'";
+if(mysqli_query($con,$qry))
+{
+    echo"record updated";
 }
-echo "</table>";
-?>      
+else
+{
+    echo" reccord not updated";
+}
+}
+?>
