@@ -1,9 +1,0 @@
-1.Decision Tree Classifier
-from sklearn.tree import DecisionTreeClassifier # type: ignore
-x=[[1],[2],[3],[4],[5]]
-y=["fail","fail","pass","pass","pass"]
-model=DecisionTreeClassifier()
-model.fit(x,y)
-hours=[[2.5]]
-prediction=model.predict(hours)
-print(prediction)
