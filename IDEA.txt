@@ -1,0 +1,11 @@
+1. New project:
+     *Project name
+      • Location 
+      • language -java
+      • JDK: add JDK program files- java- select jdk's     
+any version 
+
+2.Src right click kri new java class and name it  and add code 
+3.file- project structure - libraries click on plus sign and select java then go in home dir (MySQL connector jar file) apply and ok
+4.xammp create database 
+5. Right click on file name and run the code
