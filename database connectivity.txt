@@ -1,0 +1,42 @@
+1.create database connection and create table:
+import java.sql.*;
+public class db_connect {
+    public static void main(String args[]) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc_database", "root", "");
+            Statement st = con.createStatement();
+            String qry = "create table first (roll_no int, name varchar(10))";
+            int ans = st.executeUpdate(qry);
+            System.out.println("Table Created first try--" + ans);
+        } catch (SQLException e) {
+            System.out.println("error --" + e);
+        } catch (ClassNotFoundException e) {
+            System.out.println("Driver not found --" + e);
+        }
+    }
+}
+
+2.insert data into database table:
+import java.sql.*;
+public class Insert_db {
+    public static void main(String args[]) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_connect", "root", "");
+            Statement st = con.createStatement();
+            int roll_no = 101;
+            String nm = "PHP";
+            // Fixed query syntax for inserting multiple values cleanly
+            String qry = "insert into first (roll_no, name) values " +
+                         "(" + roll_no + ", '" + nm + "'), " +
+                         "(201, 'Mysql'), " +
+                         "(501, 'android'), " +
+                         "(901, 'SED')";
+            int ans = st.executeUpdate(qry);
+            System.out.println(ans + " record Insert successfully --");
+        } catch (Exception e) {
+            System.out.println("error --" + e);
+        }
+    }
+}
